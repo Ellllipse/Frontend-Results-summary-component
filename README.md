@@ -26,4 +26,4 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/Ellllipse/Frontend-Results-summary-component.git)
+- Solution URL: [github repo](https://github.com/Ellllipse/Frontend-Results-summary-component.git)
