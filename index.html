@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+    <title>Results summary component</title>
+    <style>
+        @font-face {
+            font-family: 'HankenGrotesk';
+            src: url('./assets/fonts/HankenGrotesk-VariableFont_wght.ttf') format('woff2');
+        }
+        * {
+            font-size: 18px;
+            font-family: HankenGrotesk;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            position: relative;
+            background-color: #ecf2ff;
+        }
+        .wrapper {
+            position: absolute;
+            left: 375px;
+            top: 175px;
+        }
+        .left {
+            position: absolute;
+            z-index: 2;
+            border-radius: 32px;
+            float: left;
+            text-align: center;
+            background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+        }
+        .left .result {
+            color: hsl(241, 100%, 89%);
+            height: 50px;
+            font-weight: 700;
+            margin-top: 20px;
+            font-size: 22px;
+        }
+        .left .score {
+            position: relative;
+            background-image: linear-gradient(hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+            border-radius: 50%;
+            margin: 20px auto;
+            height: 200px;
+            width: 200px;
+        }
+        .left .score .top {
+            position: absolute;
+            margin-top: 57px;
+            margin-left: 67px;
+            color: hsl(0, 0%, 100%);
+            font-size: 60px;
+            font-weight: 800;
+        }
+        .left .score .bottom {
+            position: absolute;
+            margin-top: 116px;
+            margin-left: 71px;
+            font-size: 20px;
+            color: hsl(241, 100%, 89%);
+        }
+        .left .summary{
+            width: 250px;
+            height: 150px;
+            padding: 10px 50px;
+        }
+        .left .summary .top {
+            color: hsl(0, 0%, 100%);
+            font-size: 26px;
+            font-weight: 800;
+        }
+        .left .summary .bottom {
+            margin-top: 10px;
+            color: hsl(241, 100%, 89%);
+        }
+        .right {
+            z-index: 1;
+            position: absolute;
+            border-radius: 32px;
+            left: 300px;
+            width: 330px;
+            height: 480px;
+            background-color: hsl(0, 0%, 100%);
+            padding-left: 90px;
+        }
+        .right .summary {
+            height: 50px;
+            font-weight: 700;
+            margin-top: 20px;
+            font-size: 22px;
+        }
+        .reaction {
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-right: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            width: 300px;
+            height: 50px;
+            background-color: hsla(0, 100%, 67%, 0.1);
+        }
+        .reaction .le {
+            color: hsl(0, 100%, 67%);
+            float: left;
+        }
+        .reaction .re {
+            float: right;
+            font-weight: 700;
+        }
+        .reaction .re .re_le {
+            float: left;
+            padding-right: 8px;
+        }
+        .reaction .re .re_re {
+            float: left;
+            color: grey;
+        }
+        .memory {
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-right: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            width: 300px;
+            height: 50px;
+            background-color: hsla(39, 100%, 56%, 0.1);
+        }
+        .memory .le {
+            color: hsl(39, 100%, 56%);
+            float: left;
+        }
+        .memory .re {
+            float: right;
+            font-weight: 700;
+        }
+        .memory .re .re_le {
+            float: left;
+            padding-right: 8px;
+        }
+        .memory .re .re_re {
+            float: left;
+            color: grey;
+        }
+        .verbal {
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-right: 20px;
+            margin-bottom: 20px; 
+            font-weight: 500;
+            width: 300px;
+            height: 50px;
+            background-color: hsla(166, 100%, 37%, 0.1);
+        }
+        .verbal .le {
+            color: hsl(166, 100%, 37%);
+            float: left;
+        }
+        .verbal .re {
+            font-weight: 700;
+            float: right;
+        }
+        .verbal .re .re_le {
+            float: left;
+            padding-right: 8px;
+        }
+        .verbal .re .re_re {
+            float: left;
+            color: grey;
+        }
+        .visual {
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-right: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            width: 300px;
+            height: 50px;
+            background-color: hsla(234, 85%, 45%, 0.1);
+            
+        }
+        .visual .le {
+            color: hsl(234, 85%, 45%);
+            float: left;
+        }
+        .visual .re {
+            font-weight: 700;
+            float: right;
+        }
+        .visual .re .re_le {
+            float: left;
+            padding-right: 8px;
+        }
+        .visual .re .re_re {
+            float: left;
+            color: grey;
+        }
+        button {
+            border: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            width: 300px;
+            height: 60px;
+            background-color: hsl(224, 30%, 27%);
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        button:hover {
+            cursor: pointer;
+            background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left">
+            <div class="result">Your Result</div>
+            <div class="score">
+                <div class="top">76</div>
+                <div class="bottom">of 100</div>
+            </div>
+            <div class="summary">
+                <div class="top">Great</div>
+                <div class="bottom">
+                    Your performance exceed 65% of the people conducting the test here!
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="summary">Summary</div>
+            <div class="reaction"> 
+                <div class="le">Reaction</div>   
+                <div class="re">
+                    <div class="re_le">80</div>
+                    <div class="re_re"> / 100</div>
+                </div>
+            </div>
+            <div class="memory">
+                <div class="le">Memory</div>   
+                <div class="re">
+                    <div class="re_le">92</div>
+                    <div class="re_re"> / 100</div>
+                </div>
+            </div>
+            <div class="verbal">
+                <div class="le">Verbal</div>   
+                <div class="re">
+                    <div class="re_le">61</div>
+                    <div class="re_re"> / 100</div>
+                </div>
+            </div>
+            <div class="visual">
+                <div class="le">Visual</div>   
+                <div class="re">
+                    <div class="re_le">72</div>
+                    <div class="re_re"> / 100</div>
+                </div>
+            </div>
+            <button>Continue</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
